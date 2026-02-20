@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: rithika-ns
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: zomato-ns
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: swiggy-ns
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blossom-ns
+
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: duolingo-ns

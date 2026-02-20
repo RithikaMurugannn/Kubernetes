@@ -1,0 +1,54 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ipl-ingress
+  namespace: rithika-ns
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: ipl-service
+            port:
+              number: 80
+      - path: /hospital
+        pathType: Prefix
+        backend:
+          service:
+            name: hospital-service
+            port:
+              number: 80
+      - path: /school
+        pathType: Prefix
+        backend:
+          service:
+            name: school-service
+            port:
+              number: 80
+      - path: /devops-monitoring
+        pathType: Prefix
+        backend:
+          service:
+            name: devops-monitoring-service
+            port:
+              number: 80
+      - path: /e-commerce
+        pathType: Prefix
+        backend:
+          service:
+            name: e-commerce-service
+            port:
+              number: 80
+      - path: /fitness
+        pathType: Prefix
+        backend:
+          service:
+            name: fitness-service
+            port:
+              number: 80

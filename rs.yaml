@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: ritz-replicaset
+  namespace: rithika-ns
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ritz
+  template:
+    metadata:
+      labels:
+        app: ritz
+    spec:
+      containers:
+      - name: ritz--container
+        image: nginx
+        ports:
+        - containerPort: 80
+
+
+#########3
+
+
