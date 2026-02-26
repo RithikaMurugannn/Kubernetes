@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('git checkout') {
+            steps {
+                git branch: 'stateful-set', url: 'https://github.com/Msocial123/fss-Retail-App_kubernetes.git'
+            }
+        }
+        
+        stage('docker build, tag & push'){
+            steps{
+                script{
+                    withDockerRegistry(credentialsId: 'docker-cred', toolName: 'docker') {
+                      sh 'docker build -t fss-retail-app:v1.0.0 .'
+                      sh 'docker tag fss-retail-app:v1.0.0 rithika17/fss-retail-app:v1.0.0'
+                      sh 'docker push rithika17/fss-retail-app:v1.0.0'
+                   }
+                }
+            }
+        }
+        stage('deploy to compose'){
+            steps {
+               // sh 'docker-compose up -d'
+               sh 'docker-compose down'
+            }
+        }
+    }
+}
+
+
+#before this u have to install docker-compose
+
+docker-compose - u will get the install apt in vm
+
+# for folder permission error in jenkins pipeline, run below commands on jenkins VM only.
+
+sudo chown -R jenkins:jenkins /var/lib/jenkins/workspace/cicd-pipeline 
