@@ -1,0 +1,29 @@
+
+eksctl create addon --name aws-ebs-csi-driver --cluster rithika-cluster --region ap-south-1
+
+kubectl get pods -n kube-system | grep ebs
+
+
+===============================================================
+
+aws eks describe-nodegroup \
+  --cluster-name rithika-cluster \
+  --nodegroup-name k8s-ng \
+  --region ap-south-1 \
+  --query "nodegroup.nodeRole" --output text
+
+
+======================
+
+
+aws iam attach-role-policy \
+  --role-name eksctl-rithika-cluster-nodegroup-k8-NodeInstanceRole-7DuLq6sBvxVW \
+  --policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+
+
+arn:aws:iam::181268068448:role/eksctl-murali-cluster-nodegroup-k8-NodeInstanceRole-7DuLq6sBvxVW
+
+
+=========================================
+
+aws eks describe-addon --cluster-name rithika-cluster --addon-name aws-ebs-csi-driver --region ap-south-1
