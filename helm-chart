@@ -1,1 +1,16 @@
+#usually create helm chart by, it will create on folder as veg-app that contains helm charts,values and templates
+
+helm create veg-app
+cd veg-app
+ls
+# u can see helm charts,values and templates and remove all files and codes in values.yaml file
+#then add manifest files
+
+# just for
+
 helm install retail-release --debug --dry-run=client veg-chart/
+
+#
+helm install retail-release .
+helm upgrade retail-release retail-app/
+helm list 
